@@ -1,0 +1,11 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://admin:admin@webfluxcoursecluster.21fbigs.mongodb.net/webflux-course?retryWrites=true&w=majority
+      auto-index-creation: true
+
+spring-doc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    url: /swagger.yaml
