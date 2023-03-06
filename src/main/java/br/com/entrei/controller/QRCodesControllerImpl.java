@@ -1,7 +1,7 @@
 package br.com.entrei.controller;
 
 import br.com.entrei.api.QrCodesApi;
-import br.com.entrei.model.QrCode;
+import br.com.entrei.model.QrCodeModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ServerWebExchange;
@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 public class QRCodesControllerImpl implements QrCodesApi {
 
     @Override
-    public Mono<ResponseEntity<QrCode>> postQRCode(Mono<QrCode> qrCode, ServerWebExchange exchange) {
+    public Mono<ResponseEntity<QrCodeModel>> postQRCode(Mono<QrCodeModel> qrCodeModel, ServerWebExchange exchange) {
         return null;
     }
 }

@@ -7,9 +7,84 @@ info:
 servers:
   - url: http://localhost
 tags:
+  - name: Evento
+    description: Controle de eventos
   - name: QR Code
     description: Controle de QR codes
 paths:
+  /eventos:
+    post:
+      tags:
+        - Evento
+      summary: Cria um novo evento.
+      operationId: postEvento
+      requestBody:
+        description: Dados para geração do evento.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventoModel'
+        required: true
+      responses:
+        '200':
+          description: Evento criado com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventoModel'
+    get:
+      tags:
+        - Evento
+      summary: Busca pelos eventos.
+      operationId: getEventos
+      responses:
+        '200':
+          description: Eventos encontrados com sucesso.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventoModel'
+
+  /eventos/{id}:
+    get:
+      tags:
+        - Evento
+      summary: Busca evento pelo ID.
+      operationId: getEvento
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id do evento
+      responses:
+        '200':
+          description: Evento encontrado com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventoModel'
+    delete:
+      tags:
+        - Evento
+      summary: Exclui evento pelo ID.
+      operationId: deleteEvento
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id do evento
+      responses:
+        '200':
+          description: Evento excluído com sucesso.
+
   /qr-codes:
     post:
       tags:
@@ -21,7 +96,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/QrCode'
+              $ref: '#/components/schemas/QrCodeModel'
         required: true
       responses:
         '200':
@@ -29,17 +104,44 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/QrCode'
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+                $ref: '#/components/schemas/QrCodeModel'
 
 components:
   schemas:
-    QrCode:
+    EventoModel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        nome:
+          type: string
+          example: 'Casamento Gabriela e Pedro'
+        descricao:
+          type: string
+          example: 'Celebração e festa de casamento'
+        dataHora:
+          type: string
+          format: date-time
+        responsaveis:
+          type: array
+          items:
+            $ref: '#/components/schemas/PessoaModel'
+
+    PessoaModel:
+      type: object
+      properties:
+        nome:
+          type: string
+          example: 'Convidado X'
+        email:
+          type: string
+          example: 'convidadox@mail.com'
+        telefone:
+          type: string
+          example: '31977777777'
+
+    QrCodeModel:
       type: object
       properties:
         id:
@@ -48,9 +150,6 @@ components:
         idEvento:
           type: string
           format: uuid
-        nomeConvidado:
-          type: string
-        emailConvidado:
-          type: string
-        telefoneConvidado:
-          type: string
+        convidado:
+          $ref: '#/components/schemas/PessoaModel'
+

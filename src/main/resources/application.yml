@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://admin:admin@webfluxcoursecluster.21fbigs.mongodb.net/webflux-course?retryWrites=true&w=majority
+      uri: mongodb+srv://admin:admin@entrei-cluster.tygkjty.mongodb.net/entrei?retryWrites=true&w=majority
       auto-index-creation: true
 
 spring-doc:
