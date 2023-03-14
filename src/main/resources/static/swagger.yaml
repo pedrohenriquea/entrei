@@ -58,7 +58,6 @@ paths:
           name: id
           schema:
             type: string
-            format: uuid
           required: true
           description: Id do evento
       responses:
@@ -78,7 +77,6 @@ paths:
           name: id
           schema:
             type: string
-            format: uuid
           required: true
           description: Id do evento
       responses:
@@ -113,7 +111,6 @@ components:
       properties:
         id:
           type: string
-          format: uuid
         nome:
           type: string
           example: 'Casamento Gabriela e Pedro'
@@ -146,10 +143,8 @@ components:
       properties:
         id:
           type: string
-          format: uuid
         idEvento:
           type: string
-          format: uuid
         convidado:
           $ref: '#/components/schemas/PessoaModel'
 

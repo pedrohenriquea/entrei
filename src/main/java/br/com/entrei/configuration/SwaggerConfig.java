@@ -17,4 +17,5 @@ public class SwaggerConfig {
     public SpringDocConfigProperties springDocConfigProperties() {
         return new SpringDocConfigProperties();
     }
+
 }

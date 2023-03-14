@@ -1,7 +1,7 @@
 package br.com.entrei.controller;
 
 import br.com.entrei.api.QrCodesApi;
-import br.com.entrei.model.QrCodeModel;
+import br.com.entrei.entity.QrCodeModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ServerWebExchange;
